@@ -1,0 +1,33 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    ViewBag.Title = Model.PageTitle;
+}
+
+<div class="row justify-content-center m3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>@Model.employee.Name</h3>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="~/images/POW_WOW_2015_001.jpg" />
+                <h4>Employee ID : @Model.employee.Id</h4>
+                <h4>Email : @Model.employee.Email</h4>
+                <h4>Dep : @Model.employee.Dep</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-info">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="C:\Users\carto\source\repos\EmployeeManagment\js\CustomScripts.js"></script>
+}
+
+
