@@ -12,7 +12,9 @@ namespace EmployeeManagment.Models
         [Required]
         [MaxLength(10, ErrorMessage ="10 MAX!")]
         public string Name { get; set; }
-        public Dept Dep { get; set; }
+
+        [Required]
+        public Dept? Dep { get; set; }
         [Required]
         [RegularExpression(@"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage ="Invalid email format.")]
         [Display(Name="Office Email")]
