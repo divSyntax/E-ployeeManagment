@@ -6,6 +6,7 @@ using EmployeeManagment.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -28,9 +29,11 @@ namespace EmployeeManagment
             //Dep injection container 
             services.AddMvc();
             services.AddSingleton<IEmployeeRepo, EmployeeImplementation>();//model and service
+            services.AddDbContextPool<EmpDbContext>(options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
