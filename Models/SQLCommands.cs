@@ -16,27 +16,41 @@ namespace EmployeeManagment.Models
 
         public Employee Add(Employee employee)
         {
-            throw new NotImplementedException();
+            empDbContext.Add(employee);
+            empDbContext.SaveChanges();
+
+            return employee;
         }
 
         public Employee DeleteEmp(int id)
         {
-            throw new NotImplementedException();
+            Employee deleteEmp = empDbContext.Employees.Find(id);
+
+            if(deleteEmp != null)
+            {
+                empDbContext.Employees.Remove(deleteEmp);
+                empDbContext.SaveChanges();
+            }
+
+            return deleteEmp;
         }
 
         public IEnumerable<Employee> getAllEmployees()
         {
-            throw new NotImplementedException();
+           return empDbContext.Employees;
         }
 
         public Employee getEmployee(int Id)
         {
-            throw new NotImplementedException();
+            return empDbContext.Employees.Find(Id);
         }
 
         public Employee Update(Employee updateEmp)
         {
-            throw new NotImplementedException();
+            var emp = empDbContext.Employees.Attach(updateEmp);
+            emp.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            empDbContext.SaveChanges();
+            return updateEmp;
         }
     }
 }
