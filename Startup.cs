@@ -29,6 +29,8 @@ namespace EmployeeManagment
             //Dep injection container 
             services.AddMvc();
             services.AddSingleton<IEmployeeRepo, EmployeeImplementation>();//model and service
+
+            //Add DB conn to dependancy container.
             services.AddDbContextPool<EmpDbContext>(options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
         }
 
