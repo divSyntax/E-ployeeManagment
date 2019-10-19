@@ -1,32 +1,42 @@
-﻿@model Employee
+﻿@model EmployeeCreateView
 @inject IEmployeeRepo empRepo
 @{
     ViewBag.Title = "Create Employee";
 }
 
 
-    <form asp-controller="Home" asp-action="Create" method="post" class="mt-3">
+    <form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="mt-3">
         <div class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
                 <input asp-for="Name" class="form-control" placeholder="Name" />
                 <span asp-validation-for="Name" style="color:red"></span>
             </div>
         </div>
         <div class="form-group row">
+            <label asp-for="Email" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <label asp-for="Email" class="col-sm-2 col-form-label"></label>
                 <input asp-for="Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="Email" style="color:red"></span>
             </div>
         </div>
         <div class="form-group row">
+            <label asp-for="Dep" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <label asp-for="Dep" class="col-sm-2 col-form-label"></label>
                 <select asp-for="Dep" asp-items="Html.GetEnumSelectList<Dept>();" class="form-control" placeholder="Dept.">
                     <option value="">Please Select</option>
                 </select>
                 <span asp-validation-for="Dep" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <div class="custom-file">
+                    <input asp-for="Photo" class="form-control custom-file-input"/>
+                    <label class="custom-file-label">Please choose a file...</label>
+                </div>
             </div>
         </div>
 
@@ -38,9 +48,23 @@
             </div>
         </div>
 
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <b>Total number of employees</b>: = @empRepo.getAllEmployees().Count()
-                </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <b>Total number of employees</b>: = @empRepo.getAllEmployees().Count()
             </div>
+        </div>
+
+        @section Scripts{
+        
+        <script>
+            $(document).ready(function () {
+
+                $('.custom-file-input').on("change", function () {
+                    var file = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(file);
+                });
+            });
+        </script>
+
+        }
     </form>
