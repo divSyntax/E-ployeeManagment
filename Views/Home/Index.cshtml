@@ -7,11 +7,11 @@
         @foreach (var item in Model)
         {
              var photopath = "~/Images/" + (item.EmpPhoto ?? "mushu.jpg");
-            <div class="card m-3">
+            <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
                 <div>
                     <h3>@item.Name</h3>
                 </div>
-                <img class="card-img-top" src=@photopath asp-append-version="true"/>
+                <img class="card-img-top imageThumbnail" src=@photopath asp-append-version="true"/>
                 <div class="card-footer text-center">
                     @*@Html.ActionLink("View","details","home",new {id=item.Id})*@
                     <a asp-controller="home" class="btn btn-primary m-1" asp-action="details" 

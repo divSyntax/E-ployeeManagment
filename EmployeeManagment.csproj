@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20191019163013_AlterEmployee.Designer.cs" />
     <Compile Remove="Migrations\20191019210642_EmpPhoto.cs" />
     <Compile Remove="Migrations\20191019210642_EmpPhoto.Designer.cs" />
+    <Compile Remove="Migrations\20191020041523_newEmployeeWithPhoto.cs" />
+    <Compile Remove="Migrations\20191020041523_newEmployeeWithPhoto.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
